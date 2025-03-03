@@ -5,7 +5,9 @@ import { history } from "../models/user.model.js";
 
 export const shortit=async(req,res)=>{
     let {original_url,expiresAT} =req.body;
+    console.log(expiresAT);
     const userid=req.id;
+    console.log(original_url);
     if(!original_url){
         return res.status(400).json({msg:"bad requested"})
     }
@@ -49,6 +51,7 @@ export  const getshort=async (req,res)=>{
         const {shortcode}=req.params;
 
         const urldata= await url.findOne({short_url_code:shortcode})
+        console.log(urldata)
         if(!urldata){
             return res.status(404).json({msg:"url not found"})
         }

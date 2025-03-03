@@ -36,6 +36,7 @@ const login=async(req,res)=>{
     if(!email ||!password){
         return res.status(400).json({msg:"Bad request"})
     }
+    console.log(email,password)
     const userdata=await users.findOne({email:email});
     if(!userdata){
         return res.status(400).json({msg:"wrong username or password"})

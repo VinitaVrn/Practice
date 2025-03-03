@@ -7,6 +7,7 @@ const secretkey=process.env.secretkey;
 class auth{
     authentication=async(req,res,next)=>{
         const token=req.headers["authorization"];
+        console.log(token)
         if(!token){
             return res.status(400).json({msg:"token required"})
         }
