@@ -1,18 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
 body{
-    background:#eadaf1; 
+    background: linear-gradient(135deg, #f4e0f1, #f7def0);
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
+
     line-height: 1.6;
     font-size: 16px;
 }
 
 #nav{
-background-color: rgb(91, 5, 91);
+background-color: rgba(109, 10, 109, 0.8);
 padding: 10px,20px;
 display: flex;
-left: 0;
-right: 0;
+/* left: 0; */
+/* right: 0; */
 top: 0;
+z-index: 1000;
 align-items: center;
 justify-content: space-between;
 position: sticky;
@@ -36,11 +41,12 @@ margin-left: 20px;
 }
 #nav-link a{
 text-decoration: none;
-color: white;
+color: rgb(232, 245, 252);
+font-family: 'Poppins', sans-serif;
 font-size: 18px;
 }
 #nav-link a:hover{
-color: rgb(25, 219, 25);
+    color: rgba(6, 207, 130, 0.8)
 }
 #auth{
 display: flex;
@@ -71,7 +77,7 @@ text-align: center;
 font-weight: 900;
 font-size: xx-large;
 font-family:Verdana, Geneva, Tahoma, sans-serif;
-margin-top: 70px;
+margin-top: 10ee0px;
 }
 h3{
 text-align: center;
@@ -129,31 +135,42 @@ font-family:Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     align-items: center;
 }
-
-.formpage{
-  background: transparent;
-    width: 900px;
+.formpage {
+    background: transparent;
+    width: 450px;
+    text-align: center;
 }
-.formpage input{
-    padding: 16px 40px;
-    font-size: 20px;
+
+.formpage input {
+    padding: 8px 20px;
+    font-size: 18px;
     border-radius: 9px;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-
-.formpage button{
-    padding: 16px 40px;
-    font-size: 20px;
-    border-radius: 9px;
-    width: 108%;
-    border-radius: 120px;
-
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
 }
 
-.formpage button:hover{
-          background: rgb(12, 12, 214);
+.button-container button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 50px;
+    flex: 1;
+    border: none;
+    background: blue;
+    color: white;
+    cursor: pointer;
+    text-align: center;
 }
+
+.button-container button:hover {
+    background: rgb(12, 12, 214);
+}
+
 .input {
     background: none;
     margin-top:150px;
@@ -180,3 +197,72 @@ button {
     cursor: pointer;
 }
 
+
+
+.url-box {
+    display: flex;
+    align-items: center;
+  
+    border-radius: 4px;
+    overflow: hidden;
+    background:transparent;
+
+    max-width: 500px;
+    margin: 20px auto;
+  }
+  .url-box input[type="text"] {
+  
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    outline: none;
+  }
+  .url-box button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  .url-box button:hover {
+    background: #0056b3;
+  }
+
+  /* for qr code */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#qrPopupImage {
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+}
