@@ -25,7 +25,7 @@ export const shortit=async(req,res)=>{
         }
         const userhistory={
             userid:userid,
-            short_url:short_url,
+            shorturl:short_url,
             expiresAT:expiresAT||null,
             clicks:0,
             last_clicked:null
