@@ -207,7 +207,7 @@ button {
     overflow: hidden;
     background:transparent;
 
-    max-width: 500px;
+    max-width: 600px;
     margin: 20px auto;
   }
   .url-box input[type="text"] {
@@ -265,4 +265,33 @@ button {
     width: 200px;
     height: 200px;
     margin-top: 10px;
+}
+
+.my-class >li{
+    padding: 1rem;
+    border: 1px  solid black;
+    background-color: red;
+}
+
+#linksList{
+    border: 2px solid black;
+    height: 100px;
+}
+/* for history */
+.link-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.link-box a {
+    color: blue;
+    text-decoration: none;
+}
+
+.link-box p {
+    margin: 5px 0;
 }

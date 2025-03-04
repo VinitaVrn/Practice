@@ -45,12 +45,12 @@ document.getElementById('qrButton').addEventListener('click', function () {
     .then(response => response.json())
     .then(data => {
       // console.log("qrCodeUrl", qrCodeUrl)
-      // const qrImagePopup = document.getElementById('qrImage');
-      const qrCodeBase64 = data.qrCode; // This should contain 'data:image/png;base64,...'
+      
+      const qrCodeBase64 = data.qrCode; 
 
       if (qrCodeBase64.startsWith("data:image/png;base64,")) {
-        document.getElementById('qrPopupImage').src = qrCodeBase64; // Set Base64 image
-        document.getElementById('qrModal').style.display = "flex"; // Show modal
+        document.getElementById('qrPopupImage').src = qrCodeBase64; 
+        document.getElementById('qrModal').style.display = "flex"; 
     } else {
         alert("QR code format is incorrect or not generated!");
     }
@@ -60,11 +60,10 @@ document.getElementById('qrButton').addEventListener('click', function () {
       alert("An error occurred while generating the QR code. Please try again.");
     });
 
-
 });
 
 // gr code logic open the modal
-// Close modal when clicking '×' button
+
 document.querySelector('.close').addEventListener('click', function () {
   document.getElementById('qrModal').style.display = "none";
 });
@@ -99,7 +98,7 @@ function updateCopyButtonVisibility() {
 setTimeout(function () {
   document.getElementById('shortenedUrl').value = "https://example.com/short";
   updateCopyButtonVisibility();
-}, 2000);
+}, 4000);
 
 document.getElementById('copyButton').addEventListener('click', function () {
   var copyText = document.getElementById('shortenedUrl');
@@ -114,24 +113,19 @@ document.getElementById('copyButton').addEventListener('click', function () {
 document.getElementById("myLinksButton").addEventListener("click", function (event) {
   event.preventDefault();
 
-  // fetch("http://localhost:2103/url/history") // Replace with your actual API endpoint
-  // .then(response => response.json())
-  // .then(data => {
-  //     console.log("Fetched Links:", data); // Debugging
-  //     displayLinks(data);
-  // })
-  fetch("https://practice-dmzg.onrender.com/url/history", {
+ 
+  fetch("http://localhost:2103/url/history", {
     method: 'GET',
     headers: {
-      // 'Content-Type': 'application/json',
+      
       "authorization": `${token}`
     },
-    // body: JSON.stringify({ original_url, expiresAT })
+    
   })
   .then(response => response.json())
     .then(data => {
       
-      console.log("Fetched Links:", data); // Debugging
+      console.log("Fetched Links:", data); 
       displayShortUrls(data);
     })
   .catch(error => {
@@ -140,18 +134,33 @@ document.getElementById("myLinksButton").addEventListener("click", function (eve
   });
 });
 
-function displayShortUrls(links) {
+function displayShortUrls(data) {
   const linksList = document.getElementById("linksList");
-  linksList.innerHTML = ""; // Clear previous list
+  linksList.innerHTML = ""; 
 
-  if (links.length === 0) {
+  if (data.length === 0) {
       linksList.innerHTML = "<p>No links found.</p>";
       return;
   }
 
-  links.forEach(link => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${link.shorturls}" target="_blank">${link.shorturls}</a>`;
-      linksList.appendChild(li);
+  data.forEach(link => {
+      // Create a container for each link
+      const box = document.createElement("div");
+      box.classList.add("link-box"); // Add CSS class for styling
+
+      // Format last_clicked date
+      const lastClicked = link.last_clicked 
+          ? new Date(link.last_clicked).toLocaleString() 
+          : "Never Clicked";
+
+      // Create the inner HTML structure
+      box.innerHTML = `
+          <p><strong>Short URL:</strong> <a href="${link.shorturls}" target="_blank">${link.shorturls}</a></p>
+          <p><strong>Clicks:</strong> ${link.clicks}</p>
+          <p><strong>Last Clicked:</strong> ${lastClicked}</p>
+      `;
+
+      // Append box to the links list container
+      linksList.appendChild(box);
   });
 }
