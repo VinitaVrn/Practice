@@ -114,7 +114,7 @@ document.getElementById("myLinksButton").addEventListener("click", function (eve
   event.preventDefault();
 
  
-  fetch("http://localhost:2103/url/history", {
+  fetch("https://practice-dmzg.onrender.com/url/history", {
     method: 'GET',
     headers: {
       
