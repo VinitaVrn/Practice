@@ -147,7 +147,7 @@ function displayShortUrls(data) {
       // Create a container for each link
       const box = document.createElement("div");
       box.classList.add("link-box"); // Add CSS class for styling
-
+      console.log(link.shorturl)
       // Format last_clicked date
       const lastClicked = link.last_clicked 
           ? new Date(link.last_clicked).toLocaleString() 
@@ -155,7 +155,7 @@ function displayShortUrls(data) {
 
       // Create the inner HTML structure
       box.innerHTML = `
-          <p><strong>Short URL:</strong> <a href="${link.shorturls}" target="_blank">${link.shorturls}</a></p>
+          <p><strong>Short URL:</strong> <a href="${link.shorturl}" target="_blank">${link.shorturl}</a></p>
           <p><strong>Clicks:</strong> ${link.clicks}</p>
           <p><strong>Last Clicked:</strong> ${lastClicked}</p>
       `;
