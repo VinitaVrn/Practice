@@ -27,6 +27,13 @@ const historyurls=new Schema({
     expiresAT:{
         type:Date,
         default:null
+    },
+    clicks:{
+        type:Number
+    },
+    last_clicked:{
+        type: Date,
+        default: Date.now
     }
 })
 

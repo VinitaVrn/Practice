@@ -26,7 +26,10 @@ export const shortit=async(req,res)=>{
         const userhistory={
             userid:userid,
             shorturls:short_url,
-            expiresAT:expiresAT||null
+            expiresAT:expiresAT||null,
+            clicks:0,
+            last_clicked:null
+
         }
         await history.create(userhistory) 
 
@@ -55,6 +58,11 @@ export  const getshort=async (req,res)=>{
         if(!urldata){
             return res.status(404).json({msg:"url not found"})
         }
+        const historydata=await history.find({userid:id});
+        historydata.clicks+=1;
+        historydata.last_clicked=new Date();
+        await historydata.save()
+
         res.redirect(urldata.original_url)
     }catch(e){
         res.status(500).json({ error: "Internal Server Error", message: e.message });
@@ -65,6 +73,7 @@ export const getuserhistory= async(req,res)=>{
     const id=req.id
     try{
         const historydata=await history.find({userid:id});
+        console.log(historydata)
         if(!historydata){
             return res.status(404).json({msg:"no urls found"})
         }
