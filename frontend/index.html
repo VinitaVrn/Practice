@@ -52,7 +52,7 @@
       event.preventDefault();
       const email = document.getElementById('login-email').value;
       const password = document.getElementById('login-password').value;
-      axios.post('http://localhost:2103/user/login', { email, password })
+      axios.post('https://practice-dmzg.onrender.com/user/login', { email, password })
         .then(function(response) {
           console.log('Login successful:', response.data);
 
@@ -69,7 +69,7 @@
       event.preventDefault();
       const email = document.getElementById('signup-email').value;
       const password = document.getElementById('signup-password').value;
-      axios.post('http://localhost:2103/user/register', { email, password })
+      axios.post('https://practice-dmzg.onrender.com/user/register', { email, password })
         .then(function(response) {
           console.log('Signup successful:', response.data);
           window.location.href = 'main.html';

@@ -9,7 +9,7 @@ function shortenLink() {
   console.log("button click")
   const original_url = document.getElementById('longUrl').value;
   const expiresAT = document.getElementById('expiry').value || null;
-  fetch('http://localhost:2103/url/shortit', {
+  fetch('https://practice-dmzg.onrender.com/url/shortit', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -34,7 +34,7 @@ document.getElementById('qrButton').addEventListener('click', function () {
   // const qrImage = document.getElementById('qrImage');
   const original_url = document.getElementById('longUrl').value;
   const expiresAT = document.getElementById('expiry').value || null;
-  fetch('http://localhost:2103/url/shortit', {
+  fetch('https://practice-dmzg.onrender.com/url/shortit', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -120,7 +120,7 @@ document.getElementById("myLinksButton").addEventListener("click", function (eve
   //     console.log("Fetched Links:", data); // Debugging
   //     displayLinks(data);
   // })
-  fetch("http://localhost:2103/url/history", {
+  fetch("https://practice-dmzg.onrender.com/url/history", {
     method: 'GET',
     headers: {
       // 'Content-Type': 'application/json',
