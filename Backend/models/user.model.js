@@ -20,7 +20,7 @@ const historyurls=new Schema({
         type:Schema.Types.ObjectId,
         ref:users
     },
-    shorturls:{
+    shorturl:{
         type:String,
         required:true
     },

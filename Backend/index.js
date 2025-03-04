@@ -4,6 +4,7 @@ import { configDotenv } from "dotenv";
 import { userRouter } from "./router/user.route.js";
 import { urlRouter } from "./router/url.router.js";
 import { getshort } from "./controller/url.control.js";
+import { Authaccess } from "./middleware/auth.middleware.js";
 configDotenv()
 import cors from "cors";
 

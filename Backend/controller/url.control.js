@@ -25,7 +25,7 @@ export const shortit=async(req,res)=>{
         }
         const userhistory={
             userid:userid,
-            shorturls:short_url,
+            shorturl:short_url,
             expiresAT:expiresAT||null,
             clicks:0,
             last_clicked:null
@@ -52,16 +52,22 @@ export const shortit=async(req,res)=>{
 export  const getshort=async (req,res)=>{
     try{
         const {shortcode}=req.params;
-
+        
         const urldata= await url.findOne({short_url_code:shortcode})
-        console.log(urldata)
         if(!urldata){
             return res.status(404).json({msg:"url not found"})
         }
-        const historydata=await history.find({userid:req.id});
+        const short_url=`${req.protocol}://${req.get("host")}/${shortcode}`
+        console.log(short_url)
+        const historydata=await history.findOne({shorturl:short_url});
+        console.log(historydata)
+        if(historydata){
+            console.log("hi")
         historydata.clicks+=1;
         historydata.last_clicked=new Date();
+        console.log(historydata.clicks)
         await historydata.save()
+        }
 
         res.redirect(urldata.original_url)
     }catch(e){

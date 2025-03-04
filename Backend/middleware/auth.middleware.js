@@ -14,6 +14,7 @@ class auth{
         try{
             const decoded=jwt.verify(token,secretkey)
             req.id=decoded.id;
+            console.log(req.id)
             next();
         }catch(e){
             res.status(401).json({msg:"Access denied. User is unauthenticated"})
