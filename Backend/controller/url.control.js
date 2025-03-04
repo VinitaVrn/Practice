@@ -58,7 +58,7 @@ export  const getshort=async (req,res)=>{
         if(!urldata){
             return res.status(404).json({msg:"url not found"})
         }
-        const historydata=await history.find({userid:id});
+        const historydata=await history.find({userid:req.id});
         historydata.clicks+=1;
         historydata.last_clicked=new Date();
         await historydata.save()
